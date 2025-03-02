@@ -1,0 +1,80 @@
+:root {
+  --width: 300px;
+  --height: 450px;
+  --background: black;
+  --duration: 1s;
+  --easing: ease-in-out;
+}
+
+/* === Card Animation 01 (Lighting) === */
+.lighting__parent {
+  overflow: hidden;
+}
+
+.lighting__element {
+  transition: 0.25s ease-in-out;
+}
+
+.lighting__element:hover {
+  height: 440px;
+  width: 290px;
+}
+
+.lighting__element::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: var(--width);
+  height: var(--height);
+  z-index: -1;
+  background: var(--background);
+  transform: rotateZ(0deg);
+  transition: var(--duration) var(--easing);
+  opacity: 0;
+}
+
+.lighting__element:hover::after {
+  opacity: 1;
+  transform: rotateZ(360deg);
+}
+
+/* === Card Animation 02 (Flip) === */
+.flip__parent {
+  overflow: hidden;
+}
+
+.flip__element {
+  transition: 0.25s ease-in-out;
+  perspective: 100px;
+}
+
+.flip__element:hover {
+  height: 440px;
+  width: 290px;
+  background-color: transparent;
+  color: red !important;
+}
+
+.flip__element::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: var(--width);
+  height: var(--height);
+  z-index: -1;
+  background: var(--background);
+  transform: rotateZ(45deg) rotateX(45deg) rotateY(45deg);
+  transition: var(--duration) var(--easing);
+  opacity: 0;
+  scale: 1;
+  background-image: url('https://images.unsplash.com/photo-1738005787913-3a51f95507a7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.flip__element:hover::after {
+  opacity: 0.85;
+  transform: rotateZ(360deg) rotateX(180deg) rotateY(180deg);
+  scale: 1;
+}
